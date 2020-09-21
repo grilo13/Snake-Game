@@ -14,28 +14,51 @@ let dx = 10;
 // Velocidade vertical
 let dy = 0;
 
+//Coordenadas do alimento da cobra
+let food_x;
+let food_y;
+
+let score = 0;
+let score2 = "Score: ";
+document.getElementById('score2').innerHTML = score2;
+
 let changing_direction = false;
 
 main();
 
+generate_food();
+
 document.addEventListener("keydown", check_arrow);
+
+let signal = "Done by Pedro Grilo";
+document.getElementById('signal').innerHTML = signal;
+
+let endgame = "You Lost. Refresh to play again.";
 
 //A funcao main repete-se e por isso a setTimeout é chamada vezes infinitas
 
 function main() {
 
   //Se alguma condição para o jogo acabar acontecer, jogo para (acaba)
-  if(game_ended()) return;
+  if(game_ended()){
+
+    document.getElementById('endgame').innerHTML = endgame;
+    /*let score3 = "";
+    let score4 ="";
+    document.getElementById('score').innerHTML = score3;
+    document.getElementById('score2').innerHTML = score4;*/
+    return;
+  } 
 
   changing_direction = false;
 
   setTimeout(function onTick(){
-  
-
   clearCanvas();
+  drawFood();
   move_snake();
   drawSnake();
 
+  //repete a main, e assim sucessivamente
   main();
 
   }, 100)
@@ -47,6 +70,33 @@ function drawSnakePart(snakePart) {
     snake_ctx.strokestyle = 'darkblue';
     snake_ctx.fillRect(snakePart.x, snakePart.y, 10, 10);  
     snake_ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
+}
+
+function drawFood(){
+  snake_ctx.fillStyle = 'lightred';
+  snake_ctx.strokestyle = 'red';
+  snake_ctx.fillRect(food_x, food_y, 10,10);
+  snake_ctx.strokeRect(food_x, food_y, 10, 10);
+}
+
+//Generate randomly a x coordinate and an y coordinate
+function random_food(min,max){
+  return Math.round((Math.random()*(max-min)+min)/10)*10;
+}
+
+//Generate the food on the location from the random_food function (x and y)
+function generate_food(){
+  food_x = random_food(0, background.width-10);
+  food_y = random_food(0, background.height-10);
+
+  snake.forEach(function has_snake_eaten_food(part){
+    const has_eaten = part.x == food_x && part.y == food_y;
+
+    //Se a food estiver em cima da cobra volta a generar comida
+    if(has_eaten){
+      generate_food();
+    }
+  });
 }
 
 // Função que dá print nas partes da cobra
@@ -73,8 +123,19 @@ function move_snake() {
   // Create the new Snake's head
   const head = {x: snake[0].x + dx, y: snake[0].y + dy};
   // Add the new head to the beginning of snake body
-  snake.unshift(head);
-  snake.pop();
+  snake.unshift(head);  
+  const eaten_food = snake[0].x === food_x && snake[0].y === food_y;
+
+  //se posicao = comida, aumenta tamanho e genera outra vez. Else dá pop como faria normalmente, continua apenas
+  if(eaten_food){
+
+    score = score + 1;
+    document.getElementById('score').innerHTML = score;
+    generate_food();
+
+  } else {
+    snake.pop();
+  }
 }
 
 // Function that checks if the pressed key is a arrow direction. If it is, it changes the direction
