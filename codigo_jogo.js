@@ -14,13 +14,23 @@ let dx = 10;
 // Velocidade vertical
 let dy = 0;
 
+let changing_direction = false;
+
 main();
+
+document.addEventListener("keydown", check_arrow);
 
 //A funcao main repete-se e por isso a setTimeout é chamada vezes infinitas
 
 function main() {
 
+  //Se alguma condição para o jogo acabar acontecer, jogo para (acaba)
+  if(game_ended()) return;
+
+  changing_direction = false;
+
   setTimeout(function onTick(){
+  
 
   clearCanvas();
   move_snake();
@@ -66,4 +76,62 @@ function move_snake() {
   snake.unshift(head);
   snake.pop();
 }
+
+// Function that checks if the pressed key is a arrow direction. If it is, it changes the direction
+function check_arrow(event){
+
+    const LEFT_KEY = 37;
+    const RIGHT_KEY = 39;
+    const UP_KEY = 38;
+    const DOWN_KEY = 40;
+
+    if(changing_direction) return;
+    changing_direction = true;
+    const keyPressed = event.keyCode;
+    // Use this to check if the snake is moving in the reverse side
+    const goingUp = dy === -10;
+    const goingDown = dy === 10;
+    const goingRight = dx === 10;
+    const goingLeft = dx === -10;
+
+    if(keyPressed === LEFT_KEY && !goingRight){
+      dx = -10;
+      dy = 0;
+    }
+
+    if(keyPressed === RIGHT_KEY && !goingLeft){
+      dx = 10;
+      dy = 0;
+    }
+
+    if(keyPressed === UP_KEY && !goingDown){
+      dx = 0;
+      dy = -10;
+    }
+
+    if(keyPressed === DOWN_KEY && !goingUp){
+      dx = 0;
+      dy = 10;
+    }
+}
+
+    function game_ended(){
+
+      //Se snake[0] == snake[i] quer dizer que a 
+      //cabeça da cobra toca na cauda da mesma, e o jogo termina
+      for(let i = 4; i < snake.length; i++){
+        if(snake[i].x === snake[0].x && snake[i].y === snake[0].y){
+          return true;
+        }
+      }
+
+      //Se a cobra passar os limites do tabuleiro termina o jogo
+      const HIT_LEFTWALL = snake[0].x < 0;
+      const HIT_RIGHTWALL = snake[0].x > background.width - 10;
+      const HIT_UPWALL = snake[0].y < 0;
+      const HIT_DOWNWALL = snake[0].y > background.height - 10;
+
+      return HIT_DOWNWALL || HIT_LEFTWALL || HIT_RIGHTWALL || HIT_UPWALL;
+    }
+
 
