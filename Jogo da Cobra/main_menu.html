@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Snake Game</title>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" type="image/x-icon" href="Images/Fav Icon/snake_logo2_icon.jpg">
+    </head> 
+    <body onload="main();">
+        
+        <div class='center'>
+
+        <div id="background_image">
+            <img class="img-background" src="Images/Main Page/main_page_done_big2.jpg" >
+        </div>
+
+        <form id ="adventure_page_button" action="adventure.html" method="GET">
+                <input type="image" src="Images/Adventure Page/Adventure Button and Background/adventure_button4.jpg" width="160" height="85" >
+        </form>
+
+        <form id ="credits_page_button" action="credits.html" method="GET">
+            <input type="image" src="Images/Credits Page/credits3.png" width="160" height="85" >
+        </form>
+
+        <form id ="arcade_button" action="arcade.html" method="GET">
+            <input type="image" src="Images/Arcade Page/arcade_button2.jpg" width="160" height="85" >
+        </form>
+
+        <form id ="definitions_button" action="definitions.html" method="GET">
+            <input type="image" src="Images/Definitions Page/definitions_icon2.png" width="200" height="200" >
+        </form>
+
+        <form id ="help_button" action="help.html" method="GET">
+            <input type="image" src="Images/Help_Info/help_button.png" width="40px" height="40px" >
+        </form>
+
+    </div>
+        
+        <canvas id="Mycanvas" max-width="400" max-height="400"></canvas>
+
+
+    </body>
+
+    <script src="Js/main_menu.js"></script>
+
+    <style>
+        .center {
+            position: absolute;
+            left: 0%;
+            top: 0%;
+            transform: translate(-50%, -50%);
+        }
+        #background_image {
+            position: absolute;
+        }
+
+        #help_button {
+            position: absolute;
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            transform: translate(140%,1265%);
+        }
+
+        #definitions_button {
+            position: absolute;
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            transform: translate(120%, 210%);
+        }
+
+        #arcade_button {
+            position: absolute;
+            top: 16%;
+            left: 9%;
+            margin-left: auto;
+            margin-right: auto;
+            transform: translate(150%,180%);
+        }
+
+
+        #adventure_page_button {
+            position: absolute;
+            top: 26%;
+            left: 9%;
+            margin-left: auto;
+            margin-right: auto;
+            transform: translate(150%,310%);
+        }
+
+        #credits_page_button {
+            position: absolute;
+            top: 36%;
+            left: 9%;
+            margin-left: auto;
+            margin-right: auto;
+            transform: translate(150%,440%);
+        }
+    </style>
+
+
+
+</html>

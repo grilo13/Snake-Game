@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Level 1 Page</title>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" type="image/x-icon" href="Images/Fav Icon/snake_logo2_icon.jpg">
+    </head> 
+    <body>
+        <div class='center'>
+
+        <div id="background_image2">
+            <img class="img-background-help" src="Images/Adventure Page/Levels/Level 1 Page/level1_big_done_score_target_done_start2.jpg" >
+        </div>
+
+        <div id="signal"></div>
+        <div id="score">0</div>
+        <div id="score2"></div>
+        <div id="losegame"></div>
+        <div id="wingame"></div>
+        <div id="target"></div>
+        <canvas id="Mycanvas" width="400" height="400"></canvas>
+
+        <form id ="back_to_menu" action="adventure.html" method="GET">
+            <input type="image" src="Images/Back Button/back_page.png" width="40" height="40" >
+        </form>
+
+        </div>
+
+    </body>
+
+    <script type='text/javascript' src='JS/level_1.js'></script>
+
+    <style>
+        .center {
+            position: absolute;
+            transform: translate(-2%, -2%);
+        }
+        #back_to_menu {
+            position: absolute;
+            top:44%;
+            left: 22%;
+            transform: translate(1050%,650%);
+        }
+
+        #Mycanvas {
+            position: absolute;
+            top: 47%;
+            left: 14%;
+            transform: translate(5%, -50%);
+          }
+
+        #score {
+            position: absolute;
+            left: 3.8%;
+            top: 2.9%;
+            font-size: 28px;
+            text-align: left;
+            transform: translate(680%,1617%);
+            color:rgb(0, 0, 77);
+        }
+        #losegame {
+            position: absolute;
+            transform: translate(60%,-250%);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-decoration-line: underline;
+            color:rgb(1, 1, 53);
+            font-size: 25px;
+        }
+
+        #wingame {
+            position: absolute;
+            transform: translate(45%,-248%);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-decoration-line: underline;
+            color:rgb(1, 1, 53);
+            font-size: 23px;
+        }
+    </style>
+    </style>
+</html>

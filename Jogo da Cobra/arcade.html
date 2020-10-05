@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arcade Mode</title>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" type="image/x-icon" href="Images/snake_logo2_icon.jpg">
+    </head>
+
+    <body>
+
+        <div class='center'>
+
+        <div id="backgroungimage2">
+            <img class="img-background-arcade" src="Images/Arcade Page/arcade_page_start3.jpg" >
+        </div>
+        
+        <div id="score">0</div>
+        <div id="losegame"></div>
+        <canvas id="Mycanvas" width="400" height="400"></canvas>
+
+       <form id ="back_menu" action="main_menu.html" method="GET">
+          <input type="image" src="Images/Back Button/back_page.png" width="40" height="40" >
+        </form>
+
+        </div>
+    
+        <style>
+          #losegame {
+            position: absolute;
+            transform: translate(60%,-250%);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-decoration-line: underline;
+            color:rgb(1, 1, 53);
+            font-size: 25px;
+          }
+
+          #Mycanvas {
+            position: absolute;
+            top: 47%;
+            left: 14%;
+            transform: translate(5%, -50%);
+          }
+
+          #score {
+            position: absolute;
+            left: 3.8%;
+            top: 2.9%;
+            font-size: 28px;
+            text-align: left;
+            transform: translate(680%,1685%);
+            color:rgb(0, 0, 77);
+          }
+
+          #back_menu {
+            position: absolute;
+            top:44%;
+            left: 22%;
+            transform: translate(1050%,650%);
+          }
+          .center {
+            position: absolute;
+            transform: translate(-2%, -2%);
+          }
+        </style>
+      </body>
+
+      <script type='text/javascript' src='Js/arcade.js'></script>
+
+</html>
